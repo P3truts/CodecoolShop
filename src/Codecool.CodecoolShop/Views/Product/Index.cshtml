@@ -20,7 +20,11 @@
                     </h5>*@
                     <h5 class="card-title">@element.Name</h5>
                     @*<p class="card-text">@element.Description.</p>*@
-                    <p class="card-text">Category: @element.ProductCategory.Department</p>
+                    <p class="card-text">Category:
+                            <a asp-area="" asp-controller="Product" asp-action="Index" asp-route-id="@element.ProductCategory.Id">
+                                @element.ProductCategory.Department
+                            </a>
+                    </p>
                     @*<p class="card-text">Supplier: @element.Supplier.Name</p>*@
                     <p class="card-text"><strong>@element.DefaultPrice.ToString("C2")</strong></p>
                     <a href="" type="button" class="btn btn-primary" style="float: bottom">Add To Cart</a>
