@@ -63,9 +63,27 @@ body {
   margin-bottom: 60px;
 }
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+    font-size: 0.4rem;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+/* Product
+-------------------------------------------------- */
+.product-card .card-body h5 {
+    font-size: 0.5rem !important;
+    text-align: left;
+}
+
+.product-card .card-body p {
+    text-align: left;
+    font-size: 10px !important;
+}
+
+.product-card .card-body a {
+    font-size: 10px !important;
+    width: 100%;
 }
