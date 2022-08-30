@@ -6,12 +6,14 @@
 
 <div class="container-fluid">
     <div class="row d-flex justify-content-around">
+        @{
+        }
     @foreach (var element in Model)
     {
         <div class="col-sm-3 d-inline-block" style="max-width: 350px; height: 350px">
             <div class="card product-card">
-                <img src="img/@(element.Name).jpg" style="height: 50%; width: 50%; align-self: center; padding-top: 10px">
 
+                    <img src="https://localhost:44368/img/@(element.Name).jpg" style="height: 50%; width: 50%; align-self: center; padding-top: 10px">
                 <div class="card-body">
                    @* <h5 class="card-title text-center">
                         Product
@@ -19,13 +21,13 @@
                         @num
                     </h5>*@
                     <h5 class="card-title">@element.Name</h5>
-                    @*<p class="card-text">@element.Description.</p>*@
+                    <p class="card-text">@element.Description.</p>
                     <p class="card-text">Category:
                             <a asp-area="" asp-controller="Product" asp-action="Index" asp-route-id="@element.ProductCategory.Id">
                                 @element.ProductCategory.Department
                             </a>
                     </p>
-                    @*<p class="card-text">Supplier: @element.Supplier.Name</p>*@
+                    <p class="card-text">Supplier: @element.Supplier.Name</p>
                     <p class="card-text"><strong>@element.DefaultPrice.ToString("C2")</strong></p>
                     <a href="" type="button" class="btn btn-primary" style="float: bottom">Add To Cart</a>
                 </div>
