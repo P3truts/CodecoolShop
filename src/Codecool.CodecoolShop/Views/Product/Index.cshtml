@@ -1,19 +1,16 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-
 @model List<Codecool.CodecoolShop.Models.Product>
 
 <div class="container-fluid">
     <div class="row d-flex justify-content-around">
-        @{
-        }
+       
     @foreach (var element in Model)
     {
-        <div class="col-sm-3 d-inline-block" style="max-width: 350px; height: 350px">
+        <div class="col-sm-4 d-inline-block" style="max-width: 350px; height: 350px">
             <div class="card product-card">
-
-                    <img src="https://localhost:44368/img/@(element.Name).jpg" style="height: 50%; width: 50%; align-self: center; padding-top: 10px">
+                <img src="https://localhost:44368/img/@(element.Name).jpg" style="height: 50%; width: 50%; align-self: center; padding-top: 10px">
                 <div class="card-body">
                    @* <h5 class="card-title text-center">
                         Product

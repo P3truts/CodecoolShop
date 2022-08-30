@@ -31,6 +31,8 @@ namespace Codecool.CodecoolShop.Controllers
             return View(products.ToList());
         }
 
+
+
         public IActionResult Privacy()
         {
             return View();
