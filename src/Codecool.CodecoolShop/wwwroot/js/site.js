@@ -2,3 +2,14 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+
+
+async function getProductsBySupplier(supplierId) {
+    const request = await fetch(`Product/Index/${supplierId}`);
+    try {
+        return await request.json();
+    } catch (error) {
+        console.error(error);
+    }
+
+}

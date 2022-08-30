@@ -24,7 +24,11 @@
                                 @element.ProductCategory.Department
                             </a>
                     </p>
-                    <p class="card-text">Supplier: @element.Supplier.Name</p>
+                    <p class="card-text">Supplier: 
+                            <button onclick="getProductsBySupplier(@element.Supplier.Id)">
+                                @element.Supplier.Name
+                            </button>
+                    </p>
                     <p class="card-text"><strong>@element.DefaultPrice.ToString("C2")</strong></p>
                     <a href="" type="button" class="btn btn-primary" style="float: bottom">Add To Cart</a>
                 </div>
@@ -34,3 +38,5 @@
     </div>
 
 </div>
+
+

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Codecool.CodecoolShop.Models;
 using Codecool.CodecoolShop.Services;
+using System.Runtime.Intrinsics.X86;
 
 namespace Codecool.CodecoolShop.Controllers
 {
@@ -22,7 +23,8 @@ namespace Codecool.CodecoolShop.Controllers
             _logger = logger;
             ProductService = new ProductService(
                 ProductDaoMemory.GetInstance(),
-                ProductCategoryDaoMemory.GetInstance());
+                ProductCategoryDaoMemory.GetInstance(),
+                SupplierDaoMemory.GetInstance());
         }
 
         public IActionResult Index(int category = 1)
@@ -30,8 +32,6 @@ namespace Codecool.CodecoolShop.Controllers
             var products = ProductService.GetProductsForCategory(category);
             return View(products.ToList());
         }
-
-
 
         public IActionResult Privacy()
         {
