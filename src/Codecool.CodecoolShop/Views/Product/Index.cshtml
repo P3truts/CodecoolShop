@@ -21,7 +21,7 @@
                     <p class="card-text">@element.Description</p>
                     <p class="card-text">Category:
                             <a asp-area="" asp-controller="Product" asp-action="Index" asp-route-category="@element.ProductCategory.Id">
-                                @element.ProductCategory.Department
+                                @element.ProductCategory.Name
                             </a>
                     </p>
                     <p class="card-text">Supplier:
