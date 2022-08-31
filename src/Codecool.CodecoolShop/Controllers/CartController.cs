@@ -66,9 +66,18 @@ namespace Codecool.CodecoolShop.Controllers
         {
             List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
             int index = isExist(id);
-            cart.RemoveAt(index);
-            SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
-            return RedirectToAction("Index");
+            if(cart[0].Quantity > 1)
+            {
+                cart[0].Quantity -= 1;
+                SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                cart.RemoveAt(index);
+                SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+                return RedirectToAction("Index");
+            }            
         }
 
         private int isExist(int id)
