@@ -1,6 +1,11 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+html {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -73,16 +78,18 @@ body {
 /* Product
 -------------------------------------------------- */
 .product-card .card-body h5 {
-    text-align: left;
+    position: relative;
+     text-align: left;
 }
 
 .product-card .card-body p {
     text-align: left;
-   
+    position: relative;
 }
 
 .product-card .card-body a {
     width: 100%;
+    position: relative;
 }
 
 
