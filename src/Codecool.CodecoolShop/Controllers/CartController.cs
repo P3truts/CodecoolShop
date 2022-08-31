@@ -31,18 +31,38 @@ namespace Codecool.CodecoolShop.Controllers
         {
             var cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
             ViewBag.cart = cart;
-            ViewBag.total = cart != null ? cart.Sum(item => item.Product.DefaultPrice * item.Quantity) : 0;
+            ViewBag.itemsQty = cart != null ? cart.Sum(item => item.Quantity) : 0;
+            ViewBag.totalPrice = cart != null ? cart.Sum(item => item.Product.DefaultPrice * item.Quantity) : 0;
             return View();
         }
 
         [Route("buy/{id}")]
-        public IActionResult Buy(int id)
+        public IActionResult Buy(int id, string quantity = "")
         {
             if (SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart") == null)
             {
                 List<Item> cart = new List<Item>();
                 cart.Add(new Item { Product = ProductService.GetProductById(id), Quantity = 1 });
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+            }
+            else if (int.TryParse(quantity, out int parseResult) && parseResult > 0)
+            {
+                List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
+                int index = isExist(id);
+                if (index != -1)
+                {
+                    cart[index].Quantity = parseResult;
+                }
+                else
+                {
+                    cart.Add(new Item { Product = ProductService.GetProductById(id), Quantity = parseResult });
+                }
+                SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+            }
+            else if (int.TryParse(quantity, out int parseResult2) && parseResult2 == 0)
+            {
+                Remove(id, true);
+                return RedirectToAction("Index");
             }
             else
             {
@@ -62,13 +82,13 @@ namespace Codecool.CodecoolShop.Controllers
         }
 
         [Route("remove/{id}")]
-        public IActionResult Remove(int id)
+        public IActionResult Remove(int id, bool userInput = false)
         {
             List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
             int index = isExist(id);
-            if(cart[0].Quantity > 1)
+            if(cart[index].Quantity > 1 && userInput == false)
             {
-                cart[0].Quantity -= 1;
+                cart[index].Quantity -= 1;
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
                 return RedirectToAction("Index");
             }
