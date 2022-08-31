@@ -11,5 +11,18 @@ async function getProductsBySupplier(supplierId) {
     } catch (error) {
         console.error(error);
     }
+}
 
+function changeQuantity(id) {
+    var qtyDiv = document.getElementById(`qty-div-${id}`);
+    location.href = `https://localhost:44368/cart/buy/${id}?quantity=${qtyDiv.innerText}`;
+}
+
+function addToCart(id) { //work in progress
+    $.ajax({
+        url: 'https://localhost:44368/cart/buy/id',
+        data: { id: id }
+    }).done(function () {
+        alert('Added');
+    });
 }
