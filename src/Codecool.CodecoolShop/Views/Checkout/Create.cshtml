@@ -1,0 +1,20 @@
+﻿@using Microsoft.Extensions.Options;
+@inject IOptions<Codecool.CodecoolShop.Data.StripeSettings> Stripe;
+@{
+    ViewData["Title"] = "Payment";
+}
+
+<div class="text-center">
+    <h4 class="text-center">$@ViewBag.total</h4>
+    <form action="/pay" method="POST">
+        <script src="https://checkout.stripe.com/checkout.js"
+                class="stripe-button"
+                data-key="@Stripe.Value.PublishableKey",
+                data-name="T-shirt"
+                data-description="Comfortable cotton t-shirt"
+                data-amount="@ViewBag.total"
+                data-currency="ron">
+        </script>
+    </form>
+</div>
+

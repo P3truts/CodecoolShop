@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Codecool.CodecoolShop.Daos;
 using Codecool.CodecoolShop.Daos.Implementations;
+using Codecool.CodecoolShop.Data;
 using Codecool.CodecoolShop.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +12,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Stripe;
+using Product = Codecool.CodecoolShop.Models.Product;
 
 namespace Codecool.CodecoolShop
 {
@@ -29,11 +32,14 @@ namespace Codecool.CodecoolShop
             services.AddControllersWithViews();
             services.AddMvc();
             services.AddSession();
+            services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            StripeConfiguration.ApiKey ="sk_test_51LcqfIF3ujix2guhFghtYRFKAuQCWR59YbXbJKIoO1Ftjiuth3b8riErOdRHtKnPuacuHUZBqxY4EL1VOOP5DnhA00WQQ60moC";
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

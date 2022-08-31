@@ -12,6 +12,8 @@ namespace Codecool.CodecoolShop.Models
 
         public List<Item> Items { get; set; }
 
+        public decimal Total { get; set; }
+
         public static Order GetInstance()
         {
             Id = new Guid();
