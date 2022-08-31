@@ -77,7 +77,7 @@ namespace Codecool.CodecoolShop
             supplierDataStore.Add(amazon);
             Supplier lenovo = new Supplier{Name = "Lenovo", Description = "Computers"};
             supplierDataStore.Add(lenovo);
-            ProductCategory tablet = new ProductCategory {Name = "Tablet", Department = "Hardware", Description = "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display." };
+            ProductCategory tablet = new ProductCategory {Name = "Tablets", Department = "Hardware", Description = "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display." };
             productCategoryDataStore.Add(tablet);
             productDataStore.Add(new Product { Name = "Amazon Fire", DefaultPrice = 49.9m, Currency = "EUR", Description = "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", ProductCategory = tablet, Supplier = amazon });
             productDataStore.Add(new Product { Name = "Lenovo IdeaPad Miix 700", DefaultPrice = 479.0m, Currency = "EUR", Description = "Keyboard cover is included. Fanless Core m5 processor. Full-size USB ports. Adjustable kickstand.", ProductCategory = tablet, Supplier = lenovo });
@@ -85,7 +85,7 @@ namespace Codecool.CodecoolShop
 
             Supplier sektor = new Supplier { Name = "Sektor", Description = "Interior Design" };
             supplierDataStore.Add(sektor);
-            ProductCategory chair = new ProductCategory { Name = "Chair", Department = "Furniture", Description = "A classic furniture object to sit on." };
+            ProductCategory chair = new ProductCategory { Name = "Chairs", Department = "Furniture", Description = "A classic furniture object to sit on." };
             productCategoryDataStore.Add(chair);
             Supplier aliExpress = new Supplier { Name = "Ali Express", Description = "Online Market" };
             supplierDataStore.Add(aliExpress);
