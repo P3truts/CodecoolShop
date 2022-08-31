@@ -28,10 +28,10 @@ namespace Codecool.CodecoolShop.Services
             return this.productDao.GetBy(category);
         }
 
-        public IEnumerable<Product> GetProductsBySupplier(int suplierId)
+        public IEnumerable<Product> GetProductsBySupplier(int supplierId)
         {
-            Supplier suplier = this.supplierDao.Get(suplierId);
-            return this.productDao.GetBy(suplier);
+            Supplier supplier = this.supplierDao.Get(supplierId);
+            return this.productDao.GetBy(supplier);
         }
     }
 }
