@@ -20,14 +20,14 @@
                     <h5 class="card-title">@element.Name</h5>
                     <p class="card-text">@element.Description.</p>
                     <p class="card-text">Category:
-                            <a asp-area="" asp-controller="Product" asp-action="Index" asp-route-id="@element.ProductCategory.Id">
+                            <a asp-area="" asp-controller="Product" asp-action="Index" asp-route-category="@element.ProductCategory.Id">
                                 @element.ProductCategory.Department
                             </a>
                     </p>
-                    <p class="card-text">Supplier: 
-                            <button onclick="getProductsBySupplier(@element.Supplier.Id)">
+                    <p class="card-text">Supplier:
+                            <a asp-area="" asp-controller="Product" asp-action="Index" asp-route-supplier="@element.Supplier.Id">
                                 @element.Supplier.Name
-                            </button>
+                            </a>
                     </p>
                     <p class="card-text"><strong>@element.DefaultPrice.ToString("C2")</strong></p>
                     <a href="" type="button" class="btn btn-primary" style="float: bottom">Add To Cart</a>
