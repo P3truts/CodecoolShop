@@ -87,7 +87,34 @@ namespace Codecool.CodecoolShop
             supplierDataStore.Add(sektor);
             ProductCategory chair = new ProductCategory { Name = "Chair", Department = "Furniture", Description = "A classic furniture object to sit on." };
             productCategoryDataStore.Add(chair);
+            Supplier aliExpress = new Supplier { Name = "Ali Express", Description = "Online Market" };
+            supplierDataStore.Add(aliExpress);
+            productDataStore.Add(new Product { Name = "Amazon Deluxe Office Leather", DefaultPrice = 288.85m, Currency = "EUR", Description = "Tall and Big Ergonomic Office High Back Chair Boss Work Task Computer Executive Comfort Comfortable Padded Loop Arms (Black).", ProductCategory = chair, Supplier = amazon });
+            productDataStore.Add(new Product { Name = "Ali Express Scorpion Gaming Chair", DefaultPrice = 3598.9m, Currency = "EUR", Description = "Shop scorpion game chair with fast delivery and free shipping. The seat is covered in synthetic leather.", ProductCategory = chair, Supplier = aliExpress });
             productDataStore.Add(new Product { Name = "Sektor Hush Accoustic Pod", DefaultPrice = 399.9m, Currency = "EUR", Description = "The best place to have a meeting without distractions from your colleagues or viceversa.", ProductCategory = chair, Supplier = sektor });
-        }
+
+            Supplier anchor = new Supplier { Name = "Anchor", Description = "Sports Equipment" };
+            supplierDataStore.Add(anchor);
+            ProductCategory weights = new ProductCategory { Name = "Weights", Department = "Sports", Description = "Typical weights for workout." };
+            productCategoryDataStore.Add(weights);
+
+            productDataStore.Add(new Product { Name = "Anchor 20kg Dumbbells Set", DefaultPrice = 36.99m, Currency = "EUR", Description = "This 20kg Spinlock Dumbbell Set is made from durable Vinyl material, with a fully adjustable build offering you enormous variety in weight selection.", ProductCategory = weights, Supplier = anchor });
+
+            ProductCategory sportBalls = new ProductCategory { Name = "Sport Balls", Department = "Sports", Description = "Round balls for different ball games." };
+            productCategoryDataStore.Add(sportBalls);
+
+            Supplier nike = new Supplier { Name = "Nike", Description = "Sports Equipment" };
+            supplierDataStore.Add(nike);
+
+            productDataStore.Add(new Product { Name = "Nike Football Size 5", DefaultPrice = 14.99m, Currency = "EUR", Description = "Football\r\nWater Resistant\r\nOuter Material: PUPVC\r\nCore Material: PVC 4 PLY\r\nWeight: 350-450 g", ProductCategory = sportBalls, Supplier = nike });
+
+            ProductCategory surfboards = new ProductCategory { Name = "Surfboards", Department = "Sports", Description = "Curved, slim and slick boards to ride the waves." };
+            productCategoryDataStore.Add(surfboards);
+
+            Supplier decathlon = new Supplier { Name = "Decathlon", Description = "Sports Equipment Shop" };
+            supplierDataStore.Add(decathlon);
+
+            productDataStore.Add(new Product { Name = "Decathlon Surfboard Leash 3 Fins", DefaultPrice = 199.99m, Currency = "EUR", Description = "The perfect board for small waves and constant practicing.", ProductCategory = surfboards, Supplier = decathlon });
+            }
     }
 }
