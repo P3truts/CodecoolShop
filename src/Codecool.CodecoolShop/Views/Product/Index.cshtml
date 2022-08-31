@@ -10,7 +10,7 @@
     {
         <div class="col-sm-4 d-inline-block" style="max-width: 350px; height: 350px">
             <div class="card product-card">
-                <img src="https://localhost:44368/img/@(element.Name).jpg" style="height: 50%; width: 50%; align-self: center; padding-top: 10px">
+                <img src="https://localhost:44368/img/@(element.ProductCategory.Department)/@(element.Name).jpg" style="height: 50%; width: 50%; align-self: center; padding-top: 10px">
                 <div class="card-body">
                    @* <h5 class="card-title text-center">
                         Product
@@ -18,7 +18,7 @@
                         @num
                     </h5>*@
                     <h5 class="card-title">@element.Name</h5>
-                    <p class="card-text">@element.Description.</p>
+                    <p class="card-text">@element.Description</p>
                     <p class="card-text">Category:
                             <a asp-area="" asp-controller="Product" asp-action="Index" asp-route-category="@element.ProductCategory.Id">
                                 @element.ProductCategory.Department
@@ -30,7 +30,7 @@
                             </a>
                     </p>
                     <p class="card-text"><strong>@element.DefaultPrice.ToString("C2")</strong></p>
-                    <a href="" type="button" class="btn btn-primary" style="float: bottom">Add To Cart</a>
+                    <a href="" type="button" class="btn btn-primary" style="float: inline-end">Add To Cart</a>
                 </div>
             </div>
         </div>
