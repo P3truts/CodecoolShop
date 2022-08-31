@@ -44,7 +44,19 @@
         </tr>
     </table>
     <br>
-    <a asp-controller="product" asp-action="index">Continue Shopping</a>
+
+    <div class="container d-flex justify-content-around">
+        <div class="col-lg-3">
+            <a asp-controller="product" asp-action="index">Continue Shopping</a>
+        </div> 
+        <div class="col-lg-3">
+            <a asp-controller="checkout" asp-action="index" asp-route-id=""
+               type="button" class="btn btn-primary" style="float: inline-end">
+                Checkout
+            </a>
+        </div>
+    </div>
+
 
 </body>
 </html>
