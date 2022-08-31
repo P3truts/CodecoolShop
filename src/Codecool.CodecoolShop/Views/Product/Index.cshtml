@@ -30,7 +30,10 @@
                             </button>
                     </p>
                     <p class="card-text"><strong>@element.DefaultPrice.ToString("C2")</strong></p>
-                    <a href="" type="button" class="btn btn-primary" style="float: inline-end">Add To Cart</a>
+                        <a asp-controller="cart" asp-action="buy" asp-route-id="@element.Id" 
+                        type="button" class="btn btn-primary" style="float: inline-end">
+                        Add To Cart </a>
+
                 </div>
             </div>
         </div>
