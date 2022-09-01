@@ -3,7 +3,6 @@ using Codecool.CodecoolShop.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Stripe;
 using System;
 using System.Collections.Generic;
 using Account = Codecool.CodecoolShop.Models.Account;
@@ -46,43 +45,6 @@ namespace Codecool.CodecoolShop.Controllers
             {
                 return View();
             }
-        }
-
-        [HttpPost]
-        public IActionResult Processing(string stripeToken, string stripeEmail)
-        {
-            var optionC = new CustomerCreateOptions
-            {
-                Email = stripeEmail,
-                Name = Account.GetInstance().LastName,
-                Phone = Account.GetInstance().PhoneNumber
-            };
-
-            var serviceC = new CustomerService();
-
-            Customer customer = serviceC.Create(optionC);
-
-            var optionCharge = new ChargeCreateOptions
-            {
-                Amount = (long)Order.GetInstance().Total,
-                Currency = "USD",
-                Description = "test",
-                Source = stripeToken,
-                ReceiptEmail = stripeEmail
-
-            };
-
-            var serviceCharge = new ChargeService();
-            Charge charge = serviceCharge.Create(optionCharge);
-
-            if(charge.Status == "succeeded")
-            {
-                ViewBag.Amount = charge.Amount;
-                ViewBag.Customer = customer.Name;
-            }
-
-            return View();
-
         }
     }
 }
