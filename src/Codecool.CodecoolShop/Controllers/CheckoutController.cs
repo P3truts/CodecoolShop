@@ -48,13 +48,14 @@ namespace Codecool.CodecoolShop.Controllers
             }
         }
 
+        [HttpPost]
         public IActionResult Processing(string stripeToken, string stripeEmail)
         {
             var optionC = new CustomerCreateOptions
             {
                 Email = stripeEmail,
-                Name = "asd",
-                Phone = "asdfq2342"
+                Name = Account.GetInstance().LastName,
+                Phone = Account.GetInstance().PhoneNumber
             };
 
             var serviceC = new CustomerService();
@@ -63,9 +64,9 @@ namespace Codecool.CodecoolShop.Controllers
 
             var optionCharge = new ChargeCreateOptions
             {
-                Amount = 100,
-                Currency = "asd",
-                Description = "asdfasddfasdfjhagsd",
+                Amount = (long)Order.GetInstance().Total,
+                Currency = "USD",
+                Description = "test",
                 Source = stripeToken,
                 ReceiptEmail = stripeEmail
 
@@ -74,7 +75,13 @@ namespace Codecool.CodecoolShop.Controllers
             var serviceCharge = new ChargeService();
             Charge charge = serviceCharge.Create(optionCharge);
 
-            return View("Index");
+            if(charge.Status == "succeeded")
+            {
+                ViewBag.Amount = charge.Amount;
+                ViewBag.Customer = customer.Name;
+            }
+
+            return View();
 
         }
     }

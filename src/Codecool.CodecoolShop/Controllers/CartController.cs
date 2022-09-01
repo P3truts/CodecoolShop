@@ -33,8 +33,7 @@ namespace Codecool.CodecoolShop.Controllers
             ViewBag.cart = cart;
             ViewBag.itemsQty = cart != null ? cart.Sum(item => item.Quantity) : 0;
             ViewBag.totalPrice = cart != null ? cart.Sum(item => item.Product.DefaultPrice * item.Quantity) : 0;
-            ViewBag.total = cart != null ? cart.Sum(item => item.Product.DefaultPrice * item.Quantity) : 0;
-            Order.GetInstance().Total = ViewBag.total;
+            Order.GetInstance().Total = ViewBag.totalPrice;
             return View();
         }
 
