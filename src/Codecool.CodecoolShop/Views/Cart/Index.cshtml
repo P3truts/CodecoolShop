@@ -11,15 +11,26 @@
     <title>Index</title>
 </head>
 <body>
-
-    <h3>Cart Page</h3>
+    @if (ViewBag.cart == null || ViewBag.Count == 0){
+        <h1>Your Shopping Cart is Empty!</h1>
+        <button class="btn-info" onclick="location.href='@Url.Action("Index", "Product")'">Continue Shopping</button>
+        <br>
+        <br>
+    }
+    else{
+        <h1>You have @ViewBag.itemsQty items in your cart!</h1>
+        <button class="btn-info" onclick="location.href='@Url.Action("Index", "Product")'">Continue Shopping</button>
+        <br>
+        <br>
+    }
+    <h3>Shopping Cart</h3>
     <table class="table" cellpadding="1" cellspacing="2" border="1">
         <tr>
-            <th>Option</th>
+            <th>Options</th>
             <th>Id</th>
             <th>Name</th>
             <th>Image</th>
-            <th>Price</th>
+            <th>Item Price</th>
             <th>Quantity</th>
             <th>Sub Total</th>
         </tr>
@@ -27,19 +38,28 @@
         @foreach (var item in ViewBag.cart)
         {
             <tr>
-                <td><a asp-controller="cart" asp-action="remove" asp-route-id="@item.Product.Id">Remove</a></td>
-                <td>@item.Product.Id</td>
+                <td>
+                    <button class="btn-success" onclick="location.href='@Url.Action("Buy", "Cart", new { id = @item.Product.Id } )'"> Add </button>
+                    <button class="btn-danger" onclick="location.href='@Url.Action("Remove", "Cart", new { id = @item.Product.Id } )'"> Remove </button>
+                </td>
+                <td id=$"id-td-@item.Product.Id">@item.Product.Id</td>
                 <td>@item.Product.Name</td>
-                <td><img src="https://localhost:44368/img/@(item.Product.ProductCategory.Department)/@(item.Product.Name).jpg" style="height: 50%; width: 50%; align-self: center; padding-top: 10px"> </td>
-                <td>@item.Product.DefaultPrice</td>
-                <td>@item.Quantity</td>
-                <td>@(item.Product.DefaultPrice * item.Quantity)</td>
+                    <td> <img class="img-thumbnail" src="https://localhost:44368/img/@(item.Product.ProductCategory.Department)/@(item.Product.Name).jpg" style="height: 25%; width: 25%; align-self: center; padding-top: 10px"> </td>
+                    <td>€@item.Product.DefaultPrice</td>
+                    <td>
+                        <div contenteditable="true" id="qty-div-@item.Product.Id">@item.Quantity</div>
+                        <button class="btn-info" id="change-btn-@item.Product.Id" onclick="changeQuantity(@item.Product.Id)"> Change </button>
+                    </td>
+                <td><strong>€@(item.Product.DefaultPrice * item.Quantity)</strong></td>
             </tr>
         }
         <tr>
-            <td align="right" colspan="6">Sum</td>
+            <td align="right" colspan="5"><strong>Total</strong></td>
             <td>
-                @ViewBag.total
+                <strong>@ViewBag.itemsQty</strong>
+            </td>
+            <td>
+                <strong>€@ViewBag.totalPrice</strong>
             </td>
         </tr>
     </table>
@@ -47,7 +67,7 @@
 
     <div class="container d-flex justify-content-around">
         <div class="col-lg-3">
-            <a asp-controller="product" asp-action="index">Continue Shopping</a>
+            <button class="btn-info" onclick="location.href='@Url.Action("Index", "Product")'">Continue Shopping</button>
         </div> 
         <div class="col-lg-3">
             <a asp-controller="checkout" asp-action="index" asp-route-id=""
