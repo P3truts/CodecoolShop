@@ -100,3 +100,9 @@ body {
    list-style: none;
    padding-left: 0;
 }
+
+
+.side-menu > ul > li > a {
+    width: 100%;
+    text-align: left;
+}
