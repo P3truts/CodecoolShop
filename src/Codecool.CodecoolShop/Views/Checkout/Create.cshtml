@@ -5,14 +5,14 @@
 }
 
 <div class="text-center">
-    <h4 class="text-center">$@ViewBag.total</h4>
+    <h4 class="text-center">$@ViewBag.totalTitle</h4>
     <form action="/pay" method="POST">
         <script src="https://checkout.stripe.com/checkout.js"
                 class="stripe-button"
                 data-key="@Stripe.Value.PublishableKey",
-                data-name="T-shirt"
-                data-description="Comfortable cotton t-shirt"
-                data-amount="@ViewBag.total"
+                data-name="CodecoolShop"
+                @*data-description="Comfortable cotton t-shirt"*@
+                data-amount="@ViewBag.totalAmount"
                 data-currency="Usd">
         </script>
     </form>

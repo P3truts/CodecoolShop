@@ -3,7 +3,6 @@ using Codecool.CodecoolShop.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
 using Account = Codecool.CodecoolShop.Models.Account;
 
@@ -38,7 +37,8 @@ namespace Codecool.CodecoolShop.Controllers
                 Order.GetInstance().Account = Account.GetInstance();
                 Order.GetInstance().Items = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
 
-                ViewBag.total = Order.GetInstance().Total;
+                ViewBag.totalTitle = Order.GetInstance().Total;
+                ViewBag.totalAmount = Order.GetInstance().Total * 100;
                 return View();
             }
             catch
