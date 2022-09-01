@@ -1,43 +1,42 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-
+﻿
 <form method="post">
     <div class="form-row">
         <div class="col">
-            <input type="text" class="form-control" placeholder="First name"  name="FName">
+            <label for="fName">First Name</label>
+            <input type="text" id="fName"accept=" "class="form-control" placeholder="First name" name="FName" required>
         </div>
         <div class="col">
-            <input type="text" class="form-control" placeholder="Last name" name="LName">
+            <label for="lName">Last Name</label>
+            <input type="text" id="lName" class="form-control" placeholder="Last name" name="LName" required>
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-12">
             <label for="inputEmail4">Email</label>
-            <input type="email" class="form-control" id="inputEmail" placeholder="Email" name="Email">
+            <input type="email" class="form-control" id="inputEmail" placeholder="Email" name="Email" required>
         </div>
     </div>
     <div class="form-group">
         <label for="inputAddress">Address</label>
-        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="Address">
+        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="Address" required>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputCity">City</label>
-            <input type="text" class="form-control" id="inputCity" name="City">
+            <input type="text" class="form-control" id="inputCity" name="City" required>
         </div>
         <div class="form-group col-md-4">
             <label for="inputState">Country</label>
             <select id="inputState" class="form-control" name="Country"required>
                 <option selected>Choose...</option>
-                <option>Asd</option>
+                <option>Romania</option>
+                <option>USA</option>
+                <option>Canada</option>
             </select>
         </div>
         <div class="form-group col-md-2">
             <label for="inputZip">Zip</label>
-            <input type="text" class="form-control" id="inputZip" name="ZipCode">
+            <input type="text" class="form-control" id="inputZip" name="ZipCode" required>
         </div>
     </div>
 
