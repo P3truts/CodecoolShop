@@ -12,8 +12,14 @@
 </head>
 <body>
     @if (ViewBag.cart == null || ViewBag.Count == 0){
-        <h1>Your Shopping Cart is Empty!</h1>
-        <button class="btn-info" onclick="location.href='@Url.Action("Index", "Product")'">Continue Shopping</button>
+        <div class="container-fluid d-flex justify-content-center">
+            <div class="row">
+                <h1>Your Shopping Cart is Empty!</h1>
+            </div>
+            <div class="row">
+                <button class="btn-info text-center" onclick="location.href='@Url.Action("Index", "Product")'">Continue Shopping</button>
+            </div>
+        </div>
         <br>
         <br>
     }
@@ -22,7 +28,7 @@
         <button class="btn-info" onclick="location.href='@Url.Action("Index", "Product")'">Continue Shopping</button>
         <br>
         <br>
-    }
+    
     <h3>Shopping Cart</h3>
     <table class="table" cellpadding="1" cellspacing="2" border="1">
         <tr>
@@ -34,7 +40,9 @@
             <th>Quantity</th>
             <th>Sub Total</th>
         </tr>
-        @if(ViewBag.cart != null)
+        @if(ViewBag.cart != null) {
+
+        }
         @foreach (var item in ViewBag.cart)
         {
             <tr>
@@ -77,6 +85,6 @@
         </div>
     </div>
 
-
+    }
 </body>
 </html>
