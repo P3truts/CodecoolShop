@@ -39,7 +39,7 @@ namespace Codecool.CodecoolShop.Controllers
 
                 ViewBag.totalTitle = Order.GetInstance().Total;
                 ViewBag.totalAmount = Order.GetInstance().Total * 100;
-                return View();
+                return View(Order.GetInstance().Items);
             }
             catch
             {

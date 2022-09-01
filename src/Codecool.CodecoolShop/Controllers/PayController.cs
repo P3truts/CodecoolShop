@@ -1,6 +1,9 @@
-﻿using Codecool.CodecoolShop.Models;
+﻿using Codecool.CodecoolShop.Helpers;
+using Codecool.CodecoolShop.Models;
 using Microsoft.AspNetCore.Mvc;
 using Stripe;
+using Stripe.Issuing;
+using System.Collections.Generic;
 using Account = Codecool.CodecoolShop.Models.Account;
 
 namespace Codecool.CodecoolShop.Controllers
@@ -37,6 +40,7 @@ namespace Codecool.CodecoolShop.Controllers
             {
                 ViewBag.Amount = charge.Amount;
                 ViewBag.Customer = customer.Name;
+                SessionHelper.Clear(HttpContext.Session);
                 return View();
             }
             return Redirect("Failed");
