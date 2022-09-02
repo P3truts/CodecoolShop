@@ -12,12 +12,12 @@
 </head>
 <body>
     @if (ViewBag.cart == null || ViewBag.Count == 0){
-        <div class="container-fluid d-flex justify-content-center">
-            <div class="row">
+        <div class="container-fluid">
+            <div class="row  d-flex justify-content-center mb-5">
                 <h1>Your Shopping Cart is Empty!</h1>
             </div>
-            <div class="row">
-                <button class="btn-info text-center" onclick="location.href='@Url.Action("Index", "Product")'">Continue Shopping</button>
+            <div class="row d-flex justify-content-center mt-5">
+                <button class="btn-info text-center btn-lg" onclick="location.href='@Url.Action("Index", "Product")'">Continue Shopping</button>
             </div>
         </div>
         <br>

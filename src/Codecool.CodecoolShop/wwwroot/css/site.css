@@ -89,9 +89,15 @@ body {
 
 .product-card .card-body a {
     width: 100%;
-    position: relative;
 }
 
+.product-card {
+    height: 500px;
+}
+
+.product-card > img {
+    border: none;
+}
 
 
 /* Side Menu
@@ -105,4 +111,8 @@ body {
 .side-menu > ul > li > a {
     width: 100%;
     text-align: left;
+    font-size: 20px;
 }
+
+
+
