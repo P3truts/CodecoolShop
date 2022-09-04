@@ -4,19 +4,20 @@
 @model List<Codecool.CodecoolShop.Models.Product>
 
 <div class="container-fluid">
-    <div class="row d-flex justify-content-around">
+    <div class="row d-flex justify-content-around" id="products-container">
+        <partial name="Products">
        
-    @foreach (var element in Model)
+@*    @foreach (var element in Model)
     {
-            <div class="col-sm-4 d-inline-block" position="relative" display="flex" @*style="max-width: 350px; height: 350px"*@>
+            <div class="col-sm-4 d-inline-block" position="relative" display="flex" style="max-width: 350px; height: 350px">
             <div class="card product-card">
                     <img class="img-thumbnail" src="https://localhost:44368/img/@(element.ProductCategory.Department)/@(element.Name).jpg" style="height: 50%; width: 50%; align-self: center; padding-top: 10px">
                 <div class="card-body">
-                   @* <h5 class="card-title text-center">
+                    <h5 class="card-title text-center">
                         Product
                         @{ var num = Model.IndexOf(element) + 1;}
                         @num
-                    </h5>*@
+                    </h5>
                     <h5 class="card-title">@element.Name</h5>
                     <p class="card-text">@element.Description</p>
                     <p class="card-text">Category:
@@ -37,7 +38,7 @@
                 </div>
             </div>
         </div>
-    }
+    }*@
     </div>
 
 </div>
