@@ -1,0 +1,84 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Shopping Cart";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body id="view-container">
+    @if (ViewBag.cart == null || ViewBag.Count == 0){
+        <h1>Your Shopping Cart is Empty!</h1>
+        <button class="btn-info" onclick="location.href='@Url.Action("Index", "Product")'">Continue Shopping</button>
+        <br>
+        <br>
+    }
+    else{
+        <h1>You have @ViewBag.itemsQty items in your cart!</h1>
+        <button class="btn-info" onclick="location.href='@Url.Action("Index", "Product")'">Continue Shopping</button>
+        <br>
+        <br>
+    }
+    <h3>Shopping Cart</h3>
+    <table class="table" cellpadding="1" cellspacing="2" border="1">
+        <tr>
+            <th>Options</th>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Item Price</th>
+            <th>Quantity</th>
+            <th>Sub Total</th>
+        </tr>
+        @if(ViewBag.cart != null)
+        @foreach (var item in ViewBag.cart)
+        {
+            <tr>
+                <td>
+@*                    <button class="btn-success" onclick="location.href='@Url.Action("Buy", "Cart", new { id = @item.Product.Id } )'"> Add </button>*@
+                        <button class="btn-success" onclick="addToCart(@item.Product.Id)"> Add </button>
+@*                    <button class="btn-danger" onclick="location.href='@Url.Action("Remove", "Cart", new { id = @item.Product.Id } )'"> Remove </button>*@
+                        <button class="btn-danger" onclick="removeFromCart(@item.Product.Id)"> Remove </button>
+                </td>
+                <td id=$"id-td-@item.Product.Id">@item.Product.Id</td>
+                <td>@item.Product.Name</td>
+                    <td> <img class="img-thumbnail" src="https://localhost:44368/img/@(item.Product.ProductCategory.Department)/@(item.Product.Name).jpg" style="height: 25%; width: 25%; align-self: center; padding-top: 10px"> </td>
+                    <td>€@item.Product.DefaultPrice</td>
+                    <td>
+                        <div contenteditable="true" id="qty-div-@item.Product.Id">@item.Quantity</div>
+                        <button class="btn-info" id="change-btn-@item.Product.Id" onclick="changeQuantityAsync(@item.Product.Id)"> Change </button>
+                    </td>
+                <td><strong>€@(item.Product.DefaultPrice * item.Quantity)</strong></td>
+            </tr>
+        }
+        <tr>
+            <td align="right" colspan="5"><strong>Total</strong></td>
+            <td>
+                <strong>@ViewBag.itemsQty</strong>
+            </td>
+            <td>
+                <strong>€@ViewBag.totalPrice</strong>
+            </td>
+        </tr>
+    </table>
+    <br>
+
+    <div class="container d-flex justify-content-around">
+        <div class="col-lg-3">
+            <button class="btn-info" onclick="location.href='@Url.Action("Index", "Product")'">Continue Shopping</button>
+        </div> 
+        <div class="col-lg-3">
+            <a asp-controller="checkout" asp-action="index" asp-route-id=""
+               type="button" class="btn btn-primary" style="float: inline-end">
+                Checkout
+            </a>
+        </div>
+    </div>
+
+
+</body>
+</html>
