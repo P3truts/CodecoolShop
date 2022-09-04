@@ -47,6 +47,28 @@ namespace Codecool.CodecoolShop.Controllers
             return View();
         }
 
+        [HttpGet]
+        [Route("Index/Products")]
+        public PartialViewResult Products(int supplier = 0, int category = 0)
+        {
+            if (supplier == 0 && category == 0)
+            {
+                var products = ProductService.GetAllProducts();
+                return PartialView(products.ToList());
+            }
+            else if (supplier != 0 && category == 0)
+            {
+                var products = ProductService.GetProductsBySupplier(supplier);
+                return PartialView(products.ToList());
+            }
+            else if (supplier == 0 && category != 0)
+            {
+                var products = ProductService.GetProductsForCategory(category);
+                return PartialView(products.ToList());
+            }
+            return PartialView();
+        }
+
         public IActionResult Privacy()
         {
             return View();
