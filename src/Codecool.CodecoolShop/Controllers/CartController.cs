@@ -9,6 +9,7 @@ using Codecool.CodecoolShop.Helpers;
 using Codecool.CodecoolShop.Daos.Implementations;
 using Codecool.CodecoolShop.Services;
 using Microsoft.Extensions.Logging;
+using System.Reflection;
 
 namespace Codecool.CodecoolShop.Controllers
 {
