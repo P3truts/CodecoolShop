@@ -10,6 +10,17 @@
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
 </head>
+@*<body id="cart-container">
+    @if (ViewBag.cart == null || ViewBag.Count == 0){
+        <div class="container-fluid">
+            <div class="row  d-flex justify-content-center mb-5">
+                <h1>Your Shopping Cart is Empty!</h1>
+            </div>
+            <div class="row d-flex justify-content-center mt-5">
+                <button class="btn-info text-center btn-lg" onclick="location.href='@Url.Action("Index", "Product")'">Continue Shopping</button>
+            </div>
+        </div>
+    }*@
 <body id="view-container">
     @if (ViewBag.cart == null || ViewBag.Count == 0){
         <h1>Your Shopping Cart is Empty!</h1>

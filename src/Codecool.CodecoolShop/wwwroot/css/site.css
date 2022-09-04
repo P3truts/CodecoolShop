@@ -91,9 +91,9 @@ body {
     width: 100%;
 }
 
-.product-card {
+/*.product-card {
     height: 500px;
-}
+}*/
 
 .product-card > img {
     border: none;

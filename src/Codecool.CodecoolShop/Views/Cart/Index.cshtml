@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
 </head>
-<body>
+@*<body>
     @if (ViewBag.cart == null || ViewBag.Count == 0){
         <div class="container-fluid">
             <div class="row  d-flex justify-content-center mb-5">
@@ -19,7 +19,7 @@
             <div class="row d-flex justify-content-center mt-5">
                 <button class="btn-info text-center btn-lg" onclick="location.href='@Url.Action("Index", "Product")'">Continue Shopping</button>
             </div>
-        </div>
+        </div>*@
 <body id="cart-container">
     <partial name="Cart" >
 @*    @if (ViewBag.cart == null || ViewBag.Count == 0){

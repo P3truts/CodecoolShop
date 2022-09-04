@@ -9,7 +9,7 @@
        
 @*    @foreach (var element in Model)
     {
-            <div class="col-sm-4 d-inline-block" position="relative" display="flex" @*style="max-width: 350px; height: 350px"*@>
+            <div class="col-sm-4 d-inline-block" position="relative" display="flex">
             <div class="card product-card mb-3" >
                     <img class="img-thumbnail" src="https://localhost:44368/img/@(element.ProductCategory.Department)/@(element.Name).jpg" style="height: 200px; width: 200px; align-self: center; padding-top: 10px">
                 <div class="card-body">
