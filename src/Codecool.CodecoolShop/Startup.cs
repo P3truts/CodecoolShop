@@ -95,7 +95,7 @@ namespace Codecool.CodecoolShop
             productCategoryDataStore.Add(chair);
             Supplier aliExpress = new Supplier { Name = "Ali Express", Description = "Online Market" };
             supplierDataStore.Add(aliExpress);
-            productDataStore.Add(new Product { Name = "Amazon Deluxe Office Leather", DefaultPrice = 288.85m, Currency = "EUR", Description = "Tall and Big Ergonomic Office High Back Chair Boss Work Task Computer Executive Comfort Comfortable Padded Loop Arms (Black).", ProductCategory = chair, Supplier = amazon });
+            productDataStore.Add(new Product { Name = "Amazon Deluxe Office Leather", DefaultPrice = 288.85m, Currency = "EUR", Description = "Tall and Big Ergonomic Office High Back Chair Boss Work Task Computer Executive Comfort Comfortable Loop Arms.", ProductCategory = chair, Supplier = amazon });
             productDataStore.Add(new Product { Name = "Ali Express Scorpion Gaming Chair", DefaultPrice = 3598.9m, Currency = "EUR", Description = "Shop scorpion game chair with fast delivery and free shipping. The seat is covered in synthetic leather.", ProductCategory = chair, Supplier = aliExpress });
             productDataStore.Add(new Product { Name = "Sektor Hush Accoustic Pod", DefaultPrice = 399.9m, Currency = "EUR", Description = "The best place to have a meeting without distractions from your colleagues or viceversa.", ProductCategory = chair, Supplier = sektor });
 
@@ -104,7 +104,7 @@ namespace Codecool.CodecoolShop
             ProductCategory weights = new ProductCategory { Name = "Weights", Department = "Sports", Description = "Typical weights for workout." };
             productCategoryDataStore.Add(weights);
 
-            productDataStore.Add(new Product { Name = "Anchor 20kg Dumbbells Set", DefaultPrice = 36.99m, Currency = "EUR", Description = "This 20kg Spinlock Dumbbell Set is made from durable Vinyl material, with a fully adjustable build offering you enormous variety in weight selection.", ProductCategory = weights, Supplier = anchor });
+            productDataStore.Add(new Product { Name = "Anchor 20kg Dumbbells Set", DefaultPrice = 36.99m, Currency = "EUR", Description = "This 20kg Spinlock Dumbbell Set is made from durable Vinyl material offering you variety of weight selection.", ProductCategory = weights, Supplier = anchor });
 
             ProductCategory sportBalls = new ProductCategory { Name = "Sport Balls", Department = "Sports", Description = "Round balls for different ball games." };
             productCategoryDataStore.Add(sportBalls);
@@ -120,7 +120,7 @@ namespace Codecool.CodecoolShop
             Supplier decathlon = new Supplier { Name = "Decathlon", Description = "Sports Equipment Shop" };
             supplierDataStore.Add(decathlon);
 
-            productDataStore.Add(new Product { Name = "Decathlon Surfboard Leash 3 Fins", DefaultPrice = 199.99m, Currency = "EUR", Description = "The perfect board for small waves and constant practicing.", ProductCategory = surfboards, Supplier = decathlon });
+            productDataStore.Add(new Product { Name = "Decathlon Surfboard Leash 3 Fins", DefaultPrice = 199.99m, Currency = "EUR", Description = "The perfect board for small waves and constant practicing. A board that's perfect for small and heavier surfers.", ProductCategory = surfboards, Supplier = decathlon });
             }
     }
 }

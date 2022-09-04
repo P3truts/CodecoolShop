@@ -10,6 +10,16 @@
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
 </head>
+<body>
+    @if (ViewBag.cart == null || ViewBag.Count == 0){
+        <div class="container-fluid">
+            <div class="row  d-flex justify-content-center mb-5">
+                <h1>Your Shopping Cart is Empty!</h1>
+            </div>
+            <div class="row d-flex justify-content-center mt-5">
+                <button class="btn-info text-center btn-lg" onclick="location.href='@Url.Action("Index", "Product")'">Continue Shopping</button>
+            </div>
+        </div>
 <body id="cart-container">
     <partial name="Cart" >
 @*    @if (ViewBag.cart == null || ViewBag.Count == 0){
@@ -23,7 +33,7 @@
         <button class="btn-info" onclick="location.href='@Url.Action("Index", "Product")'">Continue Shopping</button>
         <br>
         <br>
-    }
+    
     <h3>Shopping Cart</h3>
     <table class="table" cellpadding="1" cellspacing="2" border="1">
         <tr>
@@ -35,7 +45,9 @@
             <th>Quantity</th>
             <th>Sub Total</th>
         </tr>
-        @if(ViewBag.cart != null)
+        @if(ViewBag.cart != null) {
+
+        }
         @foreach (var item in ViewBag.cart)
         {
             <tr>
@@ -78,6 +90,7 @@
         </div>
     </div>
 
+    }
 *@
 </body>
 </html>

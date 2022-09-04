@@ -5,7 +5,7 @@
 }
 
 <div class="text-center">
-    <table class="table table-striped">
+    <table class="table table-striped mt-5 mb-5">
         <thead>
             <tr>
                 <th scope="col">Product</th>
@@ -17,7 +17,7 @@
             @foreach(var item in Model)
                 {
                 decimal sum = item.Quantity * item.Product.DefaultPrice;
-                <tr scope="row">
+                <tr scope="row checkout-products-row">
                     <td>@item.Product.Name</td> 
                     <td>@item.Quantity</td> 
                     <td>@sum</td>
