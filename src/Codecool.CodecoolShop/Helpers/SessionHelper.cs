@@ -23,7 +23,6 @@ namespace Codecool.CodecoolShop.Helpers
         public static void Clear(this ISession session)
         {
             session.Clear();
-
         }
     }
 }
