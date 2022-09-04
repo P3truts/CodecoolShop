@@ -1,0 +1,47 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model List<Codecool.CodecoolShop.Models.Product>
+
+@*<div class="container-fluid">
+    <div class="row d-flex justify-content-around">*@
+       
+    @foreach (var element in Model)
+    {
+            <div class="col-sm-4 d-inline-block" position="relative" display="flex" @*style="max-width: 350px; height: 350px"*@>
+            <div class="card product-card">
+                    <img class="img-thumbnail" src="https://localhost:44368/img/@(element.ProductCategory.Department)/@(element.Name).jpg" style="height: 50%; width: 50%; align-self: center; padding-top: 10px">
+                <div class="card-body">
+                   @* <h5 class="card-title text-center">
+                        Product
+                        @{ var num = Model.IndexOf(element) + 1;}
+                        @num
+                    </h5>*@
+                    <h5 class="card-title">@element.Name</h5>
+                    <p class="card-text">@element.Description</p>
+                    <p class="card-text">Category:
+@*                            <a asp-area="" asp-controller="Product" asp-action="Index" asp-route-category="@element.ProductCategory.Id">
+                                @element.ProductCategory.Name
+                            </a>*@
+                    <button class="btn-outline-info" onclick="filterProductsByCategory(@element.ProductCategory.Id)"> @element.ProductCategory.Name </button>
+                    </p>
+                    <p class="card-text">Supplier:
+@*                            <a asp-area="" asp-controller="Product" asp-action="Index" asp-route-supplier="@element.Supplier.Id">
+                                @element.Supplier.Name
+                            </a>*@
+                    <button class="btn-outline-secondary" onclick="filterProductsBySupplier(@element.Supplier.Id)"> @element.Supplier.Name </button>
+                    </p>
+                    <p class="card-text"><strong>@element.DefaultPrice.ToString("C2")</strong></p>
+                        <a asp-controller="cart" asp-action="buy" asp-route-id="@element.Id" 
+                        type="button" class="btn btn-primary" style="float: inline-end">
+                        Add To Cart </a>
+
+                </div>
+            </div>
+        </div>
+    }
+@*    </div>
+
+</div>*@
+
+
