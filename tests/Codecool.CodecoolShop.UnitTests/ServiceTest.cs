@@ -62,7 +62,7 @@ namespace Codecool.CodecoolShop.UnitTests
             int categoryId = 1;
             var expectedCategory = "tablets";
 
-            Assert.That(expectedCategory.ToUpper(), Is.EqualTo(_productService.GetProductsForCategory(categoryId).FirstOrDefault().ProductCategory.Name.ToUpper()));
+            Assert.That(_productService.GetProductsForCategory(categoryId).FirstOrDefault().ProductCategory.Name.ToUpper(), Is.EqualTo(expectedCategory.ToUpper()));
         }
 
         [Test]
@@ -71,7 +71,16 @@ namespace Codecool.CodecoolShop.UnitTests
             int categoryId = 1;
             var expectedCategoryCount = 3;
 
-            Assert.That(expectedCategoryCount, Is.EqualTo(_productService.GetProductsForCategory(categoryId).Count()));
+            Assert.That(_productService.GetProductsForCategory(categoryId).Count(), Is.EqualTo(expectedCategoryCount));
+        }
+
+        [Test]
+        public void GetProductBySupplierIsCorrectSupplier()
+        {
+            int supplierId = 1;
+            var expectedSupplier = "amazon";
+
+            Assert.That(_productService.GetProductsForCategory(supplierId).FirstOrDefault().Supplier.Name.ToUpper(), Is.EqualTo(expectedSupplier.ToUpper()));
         }
     }
 }
