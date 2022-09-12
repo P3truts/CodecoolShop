@@ -57,12 +57,21 @@ namespace Codecool.CodecoolShop.UnitTests
         }
 
         [Test]
-        public void GetProductByCategoryIsCorrectCategory()
+        public void GetProductForCategoryIsCorrectCategory()
         {
             int categoryId = 1;
             var expectedCategory = "tablets";
 
             Assert.That(expectedCategory.ToUpper(), Is.EqualTo(_productService.GetProductsForCategory(categoryId).FirstOrDefault().ProductCategory.Name.ToUpper()));
+        }
+
+        [Test]
+        public void GetProductForCategoryCountIsEqual()
+        {
+            int categoryId = 1;
+            var expectedCategoryCount = 3;
+
+            Assert.That(expectedCategoryCount, Is.EqualTo(_productService.GetProductsForCategory(categoryId).Count()));
         }
     }
 }
