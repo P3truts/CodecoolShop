@@ -80,7 +80,16 @@ namespace Codecool.CodecoolShop.UnitTests
             int supplierId = 1;
             var expectedSupplier = "amazon";
 
-            Assert.That(_productService.GetProductsForCategory(supplierId).FirstOrDefault().Supplier.Name.ToUpper(), Is.EqualTo(expectedSupplier.ToUpper()));
+            Assert.That(_productService.GetProductsBySupplier(supplierId).FirstOrDefault().Supplier.Name.ToUpper(), Is.EqualTo(expectedSupplier.ToUpper()));
+        }
+
+        [Test]
+        public void GetProductBySupplierCountIsEqual()
+        {
+            int supplierId = 1;
+            var expectedSupplierCount = 2;
+
+            Assert.That(_productService.GetProductsBySupplier(supplierId).Count(), Is.EqualTo(expectedSupplierCount));
         }
     }
 }
