@@ -37,5 +37,14 @@ namespace Codecool.CodecoolShop.UnitTests
 
             Assert.That(expectedResult, Is.EqualTo(productDao.GetAll().Count()));
         }
+
+        [Test]
+        public void GetAllProductsEmptyReturnsEmpty()
+        {
+            var emptyProductDao = Substitute.For<IProductDao>();
+            List<Product> expectedResult = new List<Product>();
+
+            Assert.That(emptyProductDao.GetAll(), Is.EqualTo(expectedResult));
+        }
     }
 }
