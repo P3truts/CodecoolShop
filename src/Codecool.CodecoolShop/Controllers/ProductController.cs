@@ -32,8 +32,8 @@ namespace Codecool.CodecoolShop.Controllers
             if(supplier == 0 && category == 0)
             {
                 var products = ProductService.GetAllProducts();
-                return View(products.ToList());
-            }
+            return View(products.ToList());
+        }
             else if(supplier != 0 && category == 0)
             {
                 var products = ProductService.GetProductsBySupplier(supplier);

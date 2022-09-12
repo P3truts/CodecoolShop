@@ -121,6 +121,6 @@ namespace Codecool.CodecoolShop
             supplierDataStore.Add(decathlon);
 
             productDataStore.Add(new Product { Name = "Decathlon Surfboard Leash 3 Fins", DefaultPrice = 199.99m, Currency = "EUR", Description = "The perfect board for small waves and constant practicing. A board that's perfect for small and heavier surfers.", ProductCategory = surfboards, Supplier = decathlon });
-            }
+        }
     }
 }
