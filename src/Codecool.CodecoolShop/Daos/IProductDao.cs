@@ -5,7 +5,7 @@ namespace Codecool.CodecoolShop.Daos
 {
     public interface IProductDao : IDao<Product>
     {
-        IEnumerable<Product> GetBy(Supplier supplier);
-        IEnumerable<Product> GetBy(ProductCategory productCategory);
+        IEnumerable<Product> GetBySupplier(Supplier supplier);
+        IEnumerable<Product> GetByCategory(ProductCategory productCategory);
     }
 }

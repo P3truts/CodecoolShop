@@ -46,12 +46,12 @@ namespace Codecool.CodecoolShop.Daos.Implementations
             return data;
         }
 
-        public IEnumerable<Product> GetBy(Supplier supplier)
+        public IEnumerable<Product> GetBySupplier(Supplier supplier)
         {
             return data.Where(x => x.Supplier.Id == supplier.Id);
         }
 
-        public IEnumerable<Product> GetBy(ProductCategory productCategory)
+        public IEnumerable<Product> GetByCategory(ProductCategory productCategory)
         {
             return data.Where(x => x.ProductCategory.Id == productCategory.Id);
         }
