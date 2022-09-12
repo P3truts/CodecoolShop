@@ -95,10 +95,18 @@ namespace Codecool.CodecoolShop.UnitTests
         [Test]
         public void GetProductCategoryIsCorrectCategory()
         {
-            int categoryId = 1;
+            int categoryId = 2;
             var expectedCategory = "tablets";
 
             Assert.That(_productService.GetProductCategory(categoryId).Name.ToUpper(), Is.EqualTo(expectedCategory.ToUpper()));
+        }
+
+        [Test]
+        public void GetProductCategoryInexistentReturnsNull()
+        {
+            int categoryId = 2;
+
+            Assert.That(_productService.GetProductCategory(categoryId), Is.EqualTo(null));
         }
     }
 }
