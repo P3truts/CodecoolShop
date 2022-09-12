@@ -91,5 +91,14 @@ namespace Codecool.CodecoolShop.UnitTests
 
             Assert.That(_productService.GetProductsBySupplier(supplierId).Count(), Is.EqualTo(expectedSupplierCount));
         }
+
+        [Test]
+        public void GetProductCategoryIsCorrectCategory()
+        {
+            int categoryId = 1;
+            var expectedCategory = "tablets";
+
+            Assert.That(_productService.GetProductCategory(categoryId).Name.ToUpper(), Is.EqualTo(expectedCategory.ToUpper()));
+        }
     }
 }
