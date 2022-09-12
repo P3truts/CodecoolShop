@@ -57,7 +57,7 @@
                 </td>
                 <td id=$"id-td-@item.Product.Id">@item.Product.Id</td>
                 <td>@item.Product.Name</td>
-                    <td> <img class="img-thumbnail" src="https://localhost:44368/img/@(item.Product.ProductCategory.Department)/@(item.Product.Name).jpg" style="height: 25%; width: 25%; align-self: center; padding-top: 10px"> </td>
+                    <td> <img class="img-thumbnail" src="~/img/@(item.Product.ProductCategory.Department)/@(item.Product.Name).jpg" style="height: 25%; width: 25%; align-self: center; padding-top: 10px"> </td>
                     <td>€@item.Product.DefaultPrice</td>
                     <td>
                         <div contenteditable="true" id="qty-div-@item.Product.Id">@item.Quantity</div>
