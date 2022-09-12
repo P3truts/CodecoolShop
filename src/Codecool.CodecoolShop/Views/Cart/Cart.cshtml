@@ -15,17 +15,14 @@
     @if (ViewBag.itemsQty > 0)
     {
         <h1>You have @ViewBag.itemsQty items in your cart!</h1>
-        <button class="btn-info" onclick="location.href='@Url.Action("Index", "Product")'">Continue Shopping</button>
-        <br>
-        <br>
     }
     else
     {
         <h1>Your Shopping Cart is Empty!</h1>
-        <button class="btn-info" onclick="location.href='@Url.Action("Index", "Product")'">Continue Shopping</button>
-        <br>
-        <br>
     }
+    <button class="btn-info" onclick="location.href='@Url.Action("Index", "Product")'">Continue Shopping</button>
+    <br>
+    <br>
     <h3>Shopping Cart</h3>
     <table class="table" cellpadding="1" cellspacing="2" border="1">
         <tr>
