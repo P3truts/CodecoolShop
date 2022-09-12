@@ -55,5 +55,14 @@ namespace Codecool.CodecoolShop.UnitTests
 
             Assert.That(mockProductService.GetAllProducts(), Is.EqualTo(expectedResult));
         }
+
+        [Test]
+        public void GetProductByCategoryIsCorrectCategory()
+        {
+            int categoryId = 1;
+            var expectedCategory = "tablets";
+
+            Assert.That(expectedCategory.ToUpper(), Is.EqualTo(_productService.GetProductsForCategory(categoryId).FirstOrDefault().ProductCategory.Name.ToUpper()));
+        }
     }
 }
