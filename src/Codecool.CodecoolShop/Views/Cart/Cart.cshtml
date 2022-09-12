@@ -10,26 +10,18 @@
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
 </head>
-@*<body id="cart-container">
-    @if (ViewBag.cart == null || ViewBag.Count == 0){
-        <div class="container-fluid">
-            <div class="row  d-flex justify-content-center mb-5">
-                <h1>Your Shopping Cart is Empty!</h1>
-            </div>
-            <div class="row d-flex justify-content-center mt-5">
-                <button class="btn-info text-center btn-lg" onclick="location.href='@Url.Action("Index", "Product")'">Continue Shopping</button>
-            </div>
-        </div>
-    }*@
+
 <body id="view-container">
-    @if (ViewBag.cart == null || ViewBag.Count == 0){
-        <h1>Your Shopping Cart is Empty!</h1>
+    @if (ViewBag.itemsQty > 0)
+    {
+        <h1>You have @ViewBag.itemsQty items in your cart!</h1>
         <button class="btn-info" onclick="location.href='@Url.Action("Index", "Product")'">Continue Shopping</button>
         <br>
         <br>
     }
-    else{
-        <h1>You have @ViewBag.itemsQty items in your cart!</h1>
+    else
+    {
+        <h1>Your Shopping Cart is Empty!</h1>
         <button class="btn-info" onclick="location.href='@Url.Action("Index", "Product")'">Continue Shopping</button>
         <br>
         <br>
@@ -50,9 +42,7 @@
         {
             <tr>
                 <td>
-@*                    <button class="btn-success" onclick="location.href='@Url.Action("Buy", "Cart", new { id = @item.Product.Id } )'"> Add </button>*@
                         <button class="btn-success" onclick="addToCart(@item.Product.Id)"> Add </button>
-@*                    <button class="btn-danger" onclick="location.href='@Url.Action("Remove", "Cart", new { id = @item.Product.Id } )'"> Remove </button>*@
                         <button class="btn-danger" onclick="removeFromCart(@item.Product.Id)"> Remove </button>
                 </td>
                 <td id=$"id-td-@item.Product.Id">@item.Product.Id</td>
@@ -83,10 +73,17 @@
             <button class="btn-info" onclick="location.href='@Url.Action("Index", "Product")'">Continue Shopping</button>
         </div> 
         <div class="col-lg-3">
-            <a asp-controller="checkout" asp-action="index" asp-route-id=""
+            @if (ViewBag.itemsQty > 0)
+            {
+                <a asp-controller="checkout" asp-action="index" asp-route-id=""
                type="button" class="btn btn-primary" style="float: inline-end">
                 Checkout
             </a>
+            }
+            else
+            {
+                <button class="btn btn-primary" disabled> Checkout </button>
+            }
         </div>
     </div>
 
