@@ -57,6 +57,16 @@ namespace Codecool.CodecoolShop.UnitTests
         }
 
         [Test]
+        public void GetProductForCategoryWrongIdReturnsNull()
+        {
+            int categoryId = 100;
+
+            /*            Assert.That(_productService.GetProductsForCategory(categoryId), Is.EqualTo(null));*/
+            Assert.AreEqual(null, _productService.GetProductsForCategory(categoryId));
+            /*            Assert.Throws<NullReferenceException>(() => _productService.GetProductsForCategory(categoryId));*/
+        }
+
+        [Test]
         public void GetProductForCategoryIsCorrectCategory()
         {
             int categoryId = 1;
