@@ -22,12 +22,12 @@ namespace Codecool.CodecoolShop.UnitTests
             _productService = new ProductService(_productDao, _productCategoryDao, _supplierDao);
 
 
-            Supplier amazon = new Supplier { Name = "Amazon", Description = "Digital content and services" };
+            Supplier amazon = new Supplier { Name = "Amzn", Description = "Digital content and services" };
             _supplierDao.Add(amazon);
-            Supplier lenovo = new Supplier { Name = "Lenovo", Description = "Computers" };
+            Supplier lenovo = new Supplier { Name = "Lnv", Description = "Computers" };
             _supplierDao.Add(lenovo);
 
-            ProductCategory tablet = new ProductCategory { Name = "Tablets", Department = "Hardware", Description = "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display." };
+            ProductCategory tablet = new ProductCategory { Name = "Tblts", Department = "Hardware", Description = "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display." };
             _productCategoryDao.Add(tablet);
 
             _productDao.Add(new Product { Name = "Amazon Fire", DefaultPrice = 49.9m, Currency = "EUR", Description = "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", ProductCategory = tablet, Supplier = amazon });
@@ -60,7 +60,7 @@ namespace Codecool.CodecoolShop.UnitTests
         public void GetProductForCategoryIsCorrectCategory()
         {
             int categoryId = 1;
-            var expectedCategory = "tablets";
+            var expectedCategory = "tblts";
 
             Assert.That(_productService.GetProductsForCategory(categoryId).FirstOrDefault().ProductCategory.Name.ToUpper(), Is.EqualTo(expectedCategory.ToUpper()));
         }
@@ -78,7 +78,7 @@ namespace Codecool.CodecoolShop.UnitTests
         public void GetProductBySupplierIsCorrectSupplier()
         {
             int supplierId = 1;
-            var expectedSupplier = "amazon";
+            var expectedSupplier = "amzn";
 
             Assert.That(_productService.GetProductsBySupplier(supplierId).FirstOrDefault().Supplier.Name.ToUpper(), Is.EqualTo(expectedSupplier.ToUpper()));
         }
@@ -96,7 +96,7 @@ namespace Codecool.CodecoolShop.UnitTests
         public void GetProductCategoryIsCorrectCategory()
         {
             int categoryId = 2;
-            var expectedCategory = "tablets";
+            var expectedCategory = "tblts";
 
             Assert.That(_productService.GetProductCategory(categoryId).Name.ToUpper(), Is.EqualTo(expectedCategory.ToUpper()));
         }
@@ -104,9 +104,19 @@ namespace Codecool.CodecoolShop.UnitTests
         [Test]
         public void GetProductCategoryInexistentReturnsNull()
         {
-            int categoryId = 2;
+            int categoryId = 100;
 
-            Assert.That(_productService.GetProductCategory(categoryId), Is.EqualTo(null));
+            Assert.AreEqual(null, _productService.GetProductCategory(categoryId));
+        }
+
+
+        [Test]
+        public void GetProductByIdIsCorrectProduct()
+        {
+            int productId = 2;
+            var productName = "Lenovo IdeaPad Miix 700";
+
+            Assert.That(_productService.GetProductById(productId).Name.ToUpper(), Is.EqualTo(productName.ToUpper()));
         }
     }
 }
