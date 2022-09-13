@@ -118,5 +118,13 @@ namespace Codecool.CodecoolShop.UnitTests
 
             Assert.That(_productService.GetProductById(productId).Name.ToUpper(), Is.EqualTo(productName.ToUpper()));
         }
+
+        [Test]
+        public void GetProductByIdInexistentReturnsNull()
+        {
+            int productId = 100;
+
+            Assert.AreEqual(null, _productService.GetProductById(productId));
+        }
     }
 }
