@@ -1,0 +1,19 @@
+﻿
+<form asp-controller="checkout" asp-action="pay" method="post">
+    <div class="row d-flex justify-content-center">
+        <label class="text-info">Your payment was succesfull</label>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <p class="text-center">
+            Transaction details:<br />
+            Customer: @ViewBag.Customer <br />
+            Amount: $@ViewBag.Amount
+        </p>
+    </div>
+</form>
+
+<div class="container-fluid d-flex justify-content-center">
+    <a asp-controller="Product" asp-action="Index" asp-route-id=""
+    type="button" class="btn btn-primary text-center" style="float: inline-end">
+    Continue Shoping </a>
+</div>

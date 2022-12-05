@@ -1,0 +1,42 @@
+﻿@using Microsoft.Extensions.Options;
+@inject IOptions<Codecool.CodecoolShop.Data.StripeSettings> Stripe;
+@{
+    ViewData["Title"] = "Payment";
+}
+
+<div class="text-center">
+    <table class="table table-striped mt-5 mb-5">
+        <thead>
+            <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+                {
+                decimal sum = item.Quantity * item.Product.DefaultPrice;
+                <tr scope="row checkout-products-row">
+                    <td>@item.Product.Name</td> 
+                    <td>@item.Quantity</td> 
+                    <td>@sum</td>
+                </tr>
+                }
+
+        </tbody>
+    </table>
+
+    <h4 class="text-center">$@ViewBag.totalTitle</h4>
+    <form action="/pay" method="POST">
+        <script src="https://checkout.stripe.com/checkout.js"
+                class="stripe-button"
+                data-key="@Stripe.Value.PublishableKey",
+                data-name="CodecoolShop"
+                @*data-description="Comfortable cotton t-shirt"*@
+                data-amount="@ViewBag.totalAmount"
+                data-currency="Usd">
+        </script>
+    </form>
+</div>
+
